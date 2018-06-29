@@ -1,0 +1,290 @@
+﻿@model DataRequestApplicationViewModel;
+
+@{
+    ViewData["Title"] = "Data Request Application";
+}
+
+<form asp-controller="Home" asp-action="DataRequestApplication" method="post">
+    <fieldset>
+        <legend>New Application</legend>
+
+        <div class="jumbotron">
+            <p class="text-uppercase">Important Notes</p>
+            <ol>
+                <li>Applicants requesting data should refer to the Data Access Protocols 2015.</li>
+                <li>All questions/fields must be completed (use N/A where not applicable). Incomplete applications will not be accepted.</li>
+                <li>Please send the completed application and any supporting documentation by email to datarequest@acara.edu.au</li>
+                <li>Please note that information provided in the form (including personal information) will be used by ACARA for record keeping, decision making and policy development purposes.  The information will be provided to members of ACARA data request panel, other ACARA staff (as required) and may be disclosed to the ACARA Research and Data Committee as well as members of ACARA’s National Assessment, Data, Analysis and Reporting Reference Group (NADAR) and the ACARA Board for the purpose of advice and decision making.  These groups include representatives from education departments, non-government school peak bodies, research experts and other stakeholder groups.  Information about how ACARA deals with personal information is available on the <a href="http://www.acara.edu.au/privacy.html" target="_self">‘Privacy ‘ page</a> of the ACARA website online: </li>
+                <li>5.	Successful applicants will be required to sign a licence deed pertaining to the management of the data provided.</li>
+            </ol>
+        </div>
+
+        <div class="form-group">
+            <label class="text-capitalize" asp-for="OrganisationLegalName">Organisation legal name</label>
+            <input type="text" class="form-control" asp-for="OrganisationLegalName" />
+            <span asp-validation-for="OrganisationLegalName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="OrganisationABN">Organisation ABN</label>
+            <input type="text" class="form-control" asp-for="OrganisationABN" maxlength="11"/>
+            <span asp-validation-for="OrganisationABN" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="OrganisationPhysicalAddress">Organisation Physical Address</label>
+            <input type="text" class="form-control" asp-for="OrganisationPhysicalAddress" />
+            <span asp-validation-for="OrganisationPhysicalAddress" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="AuthorisedUsers">Authorised Users Of The Data</label>
+            <input type="text" class="form-control" asp-for="AuthorisedUsers" />
+            <span asp-validation-for="AuthorisedUsers" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="AuthorisedSignatoryName">Authorised Signatory Name</label>
+            <input type="text" class="form-control" asp-for="AuthorisedSignatoryName" />
+            <span asp-validation-for="AuthorisedSignatoryName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="AuthorisedSignatoryPosition">Authorised Signatory Position</label>
+            <input type="text" class="form-control" asp-for="AuthorisedSignatoryPosition" />
+            <span asp-validation-for="AuthorisedSignatoryPosition" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="EmailAddress">Email Address</label>
+            <input type="text" class="form-control" asp-for="EmailAddress" />
+            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="AddressForServiceOfNotices">Address For Service Of Notices(Name, Position, Postal Address):</label>
+            <p>@Model?.AddressForServiceOfNotices</p>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table-bordered">
+                <thead>
+                    <tr>
+                        <td>Dataset</td>
+                        <td>Current calendar year</td>
+                        <td>All calendar years</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>NAPLAN results</td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="NAPLAN_IsCurrentYear" group="NAPLAN" data-level="schoolLevel"/>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="NAPLAN_IsAllYears" group="NAPLAN" data-level="schoolLevel"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>NAPLAN results – similar schools</td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="NAPLAN_SimilarSchools_IsCurrentYear" group="NAPLAN_SimilarSchools" data-level="schoolLevel"/>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="NAPLAN_SimilarSchools_IsAllYears" group="NAPLAN_SimilarSchools" data-level="schoolLevel"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>NAPLAN results – simple student gain</td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="NAPLAN_SimpleStudentGain_IsCurrentYear" group="NAPLAN_SimpleStudentGain" data-level="schoolLevel"/>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="NAPLAN_SimpleStudentGain_IsAllYears" group="NAPLAN_SimpleStudentGain" data-level="schoolLevel"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>NAPLAN results – same starting score gain</td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="NAPLAN_SameStartingScoreGain_IsCurrentYear" group="NAPLAN_SameStartingScoreGain" data-level="schoolLevel"/>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="NAPLAN_SameStartingScoreGain_IsAllYears" group="NAPLAN_SameStartingScoreGain" data-level="schoolLevel"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>NAPLAN results – similar schools gain</td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="NAPLAN_SimilarSchoolsGain_IsCurrentYear" group="NAPLAN_SimilarSchoolsGain" data-level="schoolLevel"/>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="NAPLAN_SimilarSchoolsGain_IsAllYears" group="NAPLAN_SimilarSchoolsGain" data-level="schoolLevel"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>School attendance</td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="SchoolAttendance_IsCurrentYear" group="SchoolAttendance"/>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="SchoolAttendance_IsAllYears" group="SchoolAttendance"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Senior Secondary</td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="SeniorSecondary_IsCurrentYear" group="SeniorSecondary"/>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="SeniorSecondary_IsAllYears" group="SeniorSecondary"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>VET in schools</td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="VETInSchools_IsCurrentYear" group="VETInSchools"/>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="VETInSchools_IsAllYears" group="VETInSchools"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Finance</td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="Finance_IsCurrentYear" group="Finance"/>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="Finance_IsAllYears" group="Finance"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Enrolments by grade</td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="EnrolmentsByGrade_IsCurrentYear" group="EnrolmentsByGrade"/>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="EnrolmentsByGrade_IsAllYears" group="EnrolmentsByGrade"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Student level de-identified dataset
+                            <br />
+                            Please note that student level data cannot be provided with school level data
+                        </td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="StudentLevelDeidentified_IsCurrentYear" group="StudentLevelDeidentified"/>
+                            <span asp-validation-for="StudentLevelDeidentified_IsCurrentYear" class="text-danger"></span>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="StudentLevelDeidentified_IsAllYears" group="StudentLevelDeidentified" />
+                            <span asp-validation-for="StudentLevelDeidentified_IsAllYears" class="text-danger"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Customised request
+                            <br />
+                            <input type="text" asp-for="CustomisedRequestText"/>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="CustomisedRequest_IsCurrentYear" group="CustomisedRequest"/>
+                        </td>
+                        <td>
+                            <input type="checkbox" value="true" asp-for="CustomisedRequest_IsAllYears" group="CustomisedRequest"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <label>Please provide a detailed description of the intended use of the requested data (you must provide justification for each data set that you are requesting):</label>
+            <textarea rows="3" class="form-control" asp-for="DetailedDescriptionOfTheIntendedUse"></textarea>
+            <span asp-validation-for="DetailedDescriptionOfTheIntendedUse" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>List planned product(s) from the data provided (e.g. report):</label>
+            <textarea rows="3" class="form-control" asp-for="PlannedProductsFromTheDataProvided"></textarea>
+            <span asp-validation-for="PlannedProductsFromTheDataProvided" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Licence Period: From date of the ‘Agreement to access ACARA School Data’	To:</label>
+            <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-today-highlight="true">
+                <input type="text" class="form-control" asp-for="LicensePeriod" value="@Model?.LicensePeriodString">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </div>
+            </div>
+            <span asp-validation-for="LicensePeriod" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
+</form>
+
+@section Scripts
+{
+    @Html.Partial("_ValidationScriptsPartial");
+    @Html.Partial("_DatepickerScriptsPartial");
+
+    <script>
+        // the selector will match all input controls of type :checkbox
+        // and attach a click event handler 
+        $("input:checkbox").on('click', function () {
+            // in the handler, 'this' refers to the box clicked on
+            var $box = $(this);
+            if ($box.is(":checked")) {
+                // the name of the box is retrieved using the .attr() method
+                // as it is assumed and expected to be immutable
+                var group = "input:checkbox[group='" + $box.attr("group") + "']";
+                // the checked state of the group/box on the other hand will change
+                // and the current value is retrieved using .prop() method
+                $(group).prop("checked", false);
+                $box.prop("checked", true);
+            } else {
+                $box.prop("checked", false);
+            }
+        });
+
+        (function ($) {
+            $.validator.addMethod('validateStudentLevelDeidentified', function (value, element, params) {
+                debugger;
+                if ($(element).is(":checked")) {
+                    var isValid = true;
+                    var schoolDataLevel = "input:checkbox[data-level='schoolLevel']";
+
+                    $(schoolDataLevel).each(function () {
+                        if ($(this).is(":checked")) {
+                            isValid = false;
+                            return false;
+                        }
+                    });
+
+                    return isValid;
+
+                } else {
+                    return true;
+                }
+
+            });
+
+            $.validator.unobtrusive.adapters.addBool('allowselectstudentleveldeidentified', 'validateStudentLevelDeidentified');
+
+        })(jQuery);
+    </script>
+}

@@ -1,0 +1,28 @@
+﻿@model DateTime
+
+@{
+    ViewData["Title"] = "Date On Action";
+}
+
+<form asp-controller="Home" asp-action="DateOnAction" method="post">
+    <div class="form-group">
+        <label>Choose a date</label>
+        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-today-highlight="true">
+            <input type="text" class="form-control" name="TempDate" id="SubmittedDate">
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div class="row">
+    <p>@Model.ToString()</p>
+</div>
+
+@section Scripts
+{
+    @Html.Partial("_DatepickerScriptsPartial");
+}

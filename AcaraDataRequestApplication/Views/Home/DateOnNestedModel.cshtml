@@ -1,0 +1,34 @@
+﻿@model TestViewModel
+
+@{
+    ViewData["Title"] = "Date On Nested Model";
+}
+
+<form asp-controller="Home" asp-action="DateOnNestedModel" method="post">
+    <div class="form-group">
+        <label asp-for="FirstNested.SecondNested.Code">Code</label>
+        <input type="text" class="form-control" asp-for="FirstNested.SecondNested.Code" />
+    </div>
+
+    <div class="form-group">
+        <label>Choose a date</label>
+        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-autoclose="true" data-date-today-highlight="true">
+            <input type="text" class="form-control" asp-for="FirstNested.SecondNested.ReleaseDate">
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </div>
+        </div>
+        <span asp-validation-for="FirstNested.SecondNested.ReleaseDate" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div class="row">
+    <p>@Model?.FirstNested?.SecondNested?.ReleaseDate.ToString()</p>
+</div>
+
+@section Scripts
+    {
+    @Html.Partial("_DatepickerScriptsPartial");
+}
