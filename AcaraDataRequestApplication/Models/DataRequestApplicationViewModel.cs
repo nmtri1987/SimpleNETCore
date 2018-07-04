@@ -51,19 +51,39 @@ namespace AcaraDataRequestApplication.Models
             }
         }
 
+        [AllowSelectSchoolLevel]
+        [Remote("VerifySchoolDataLevel", "Home", AdditionalFields = nameof(Id) + "," + nameof(OrganisationABN))]
         public bool NAPLAN_IsCurrentYear { get; set; }
+        [AllowSelectSchoolLevel]
+        [Remote("VerifySchoolDataLevel", "Home", AdditionalFields = nameof(Id) + "," + nameof(OrganisationABN))]
         public bool NAPLAN_IsAllYears { get; set; }
 
+        [AllowSelectSchoolLevel]
+        [Remote("VerifySchoolDataLevel", "Home", AdditionalFields = nameof(Id) + "," + nameof(OrganisationABN))]
         public bool NAPLAN_SimilarSchools_IsCurrentYear { get; set; }
+        [AllowSelectSchoolLevel]
+        [Remote("VerifySchoolDataLevel", "Home", AdditionalFields = nameof(Id) + "," + nameof(OrganisationABN))]
         public bool NAPLAN_SimilarSchools_IsAllYears { get; set; }
 
+        [AllowSelectSchoolLevel]
+        [Remote("VerifySchoolDataLevel", "Home", AdditionalFields = nameof(Id) + "," + nameof(OrganisationABN))]
         public bool NAPLAN_SimpleStudentGain_IsCurrentYear { get; set; }
+        [AllowSelectSchoolLevel]
+        [Remote("VerifySchoolDataLevel", "Home", AdditionalFields = nameof(Id) + "," + nameof(OrganisationABN))]
         public bool NAPLAN_SimpleStudentGain_IsAllYears { get; set; }
 
+        [AllowSelectSchoolLevel]
+        [Remote("VerifySchoolDataLevel", "Home", AdditionalFields = nameof(Id) + "," + nameof(OrganisationABN))]
         public bool NAPLAN_SameStartingScoreGain_IsCurrentYear { get; set; }
+        [AllowSelectSchoolLevel]
+        [Remote("VerifySchoolDataLevel", "Home", AdditionalFields = nameof(Id) + "," + nameof(OrganisationABN))]
         public bool NAPLAN_SameStartingScoreGain_IsAllYears { get; set; }
 
+        [AllowSelectSchoolLevel]
+        [Remote("VerifySchoolDataLevel", "Home", AdditionalFields = nameof(Id) + "," + nameof(OrganisationABN))]
         public bool NAPLAN_SimilarSchoolsGain_IsCurrentYear { get; set; }
+        [AllowSelectSchoolLevel]
+        [Remote("VerifySchoolDataLevel", "Home", AdditionalFields = nameof(Id) + "," + nameof(OrganisationABN))]
         public bool NAPLAN_SimilarSchoolsGain_IsAllYears { get; set; }
 
         public bool SchoolAttendance_IsCurrentYear { get; set; }
@@ -87,6 +107,7 @@ namespace AcaraDataRequestApplication.Models
         [AllowSelectStudentLevelDeidentified]
         public bool StudentLevelDeidentified_IsAllYears { get; set; }
 
+        [RequireCustomisedRequestIfNeeded]
         [StringLength(500)]
         public string CustomisedRequestText { get; set; }
         public bool CustomisedRequest_IsCurrentYear { get; set; }

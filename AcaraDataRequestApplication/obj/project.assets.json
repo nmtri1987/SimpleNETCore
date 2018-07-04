@@ -27,6 +27,12 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
+      "BuildBundlerMinifier/2.8.391": {
+        "type": "package",
+        "build": {
+          "build/BuildBundlerMinifier.targets": {}
+        }
+      },
       "Libuv/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -5139,6 +5145,25 @@
         "automapper.extensions.microsoft.dependencyinjection.4.0.1.nupkg.sha512",
         "automapper.extensions.microsoft.dependencyinjection.nuspec",
         "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
+      ]
+    },
+    "BuildBundlerMinifier/2.8.391": {
+      "sha512": "JvnXAF6e55QKR9t+UcG/kVcWap22fHeKjkUcrJwl2N3vF/NpohuvZlBceqYF9S8aL8xOx6h+PX2plnymc23kiQ==",
+      "type": "package",
+      "path": "buildbundlerminifier/2.8.391",
+      "files": [
+        "build/BuildBundlerMinifier.targets",
+        "buildbundlerminifier.2.8.391.nupkg.sha512",
+        "buildbundlerminifier.nuspec",
+        "tools/net46/BundlerMinifier.dll",
+        "tools/net46/NUglify.dll",
+        "tools/net46/Newtonsoft.Json.dll",
+        "tools/netcoreapp2.0/BundlerMinifier.dll",
+        "tools/netcoreapp2.0/NUglify.dll",
+        "tools/netcoreapp2.0/Newtonsoft.Json.dll",
+        "tools/netstandard1.3/BundlerMinifier.dll",
+        "tools/netstandard1.3/NUglify.dll",
+        "tools/netstandard1.3/Newtonsoft.Json.dll"
       ]
     },
     "Libuv/1.10.0": {
@@ -10463,10 +10488,12 @@
       ]
     },
     "System.Linq.Queryable/4.0.1": {
-      "sha512": "Yn/WfYe9RoRfmSLvUt2JerP0BTGGykCZkQPgojaxgzF2N0oPo+/AhB8TXOpdCcNlrG3VRtsamtK2uzsp3cqRVw==",
+      "sha512": "2w6d5l1Kbl/oUR4SIecvuLcPUND/z14H1mTPjwUOsbv3tGSl3vYt++9zT8P7ZkLhPx3R0eO914Y8ohSaEd3LDg==",
       "type": "package",
       "path": "system.linq.queryable/4.0.1",
       "files": [
+        "System.Linq.Queryable.4.0.1.nupkg.sha512",
+        "System.Linq.Queryable.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/monoandroid10/_._",
@@ -10514,9 +10541,7 @@
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.linq.queryable.4.0.1.nupkg.sha512",
-        "system.linq.queryable.nuspec"
+        "ref/xamarinwatchos10/_._"
       ]
     },
     "System.Memory/4.5.1": {
@@ -12247,7 +12272,7 @@
       ]
     },
     "System.Security.Cryptography.Xml/4.4.2": {
-      "sha512": "1m+fKVrApgKYMRuE0MF0vGjqy4XqAp1rCtyAzMXhJajMDDytMh/rHk9hp4M7KKk3QQZoWJUvyUY7xcw74w+JiQ==",
+      "sha512": "q9Dren/YP5jhRCkDvLfuaPpMTQzP97ANvzq/OoGgwK8YdLRSTABS9oW5/23OKoM2DRCuBrh4qaecD2YNhPtuzQ==",
       "type": "package",
       "path": "system.security.cryptography.xml/4.4.2",
       "files": [
@@ -13444,6 +13469,7 @@
     ".NETCoreApp,Version=v2.0": [
       "AutoMapper >= 7.0.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 4.0.1",
+      "BuildBundlerMinifier >= 2.8.391",
       "Domain >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.8",
       "Microsoft.EntityFrameworkCore.Tools >= 2.1.1",
@@ -13453,26 +13479,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\NTM1HC\\.nuget\\packages\\": {},
+    "C:\\Users\\tuannguyena1\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "C:\\Users\\NTM1HC\\Downloads\\AcaraDataRequestApplication\\AcaraDataRequestApplication\\AcaraDataRequestApplication.csproj",
+      "projectUniqueName": "H:\\02.Research\\08.TempSource\\AcaraDataRequestApplication\\AcaraDataRequestApplication\\AcaraDataRequestApplication.csproj",
       "projectName": "AcaraDataRequestApplication",
-      "projectPath": "C:\\Users\\NTM1HC\\Downloads\\AcaraDataRequestApplication\\AcaraDataRequestApplication\\AcaraDataRequestApplication.csproj",
-      "packagesPath": "C:\\Users\\NTM1HC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\NTM1HC\\Downloads\\AcaraDataRequestApplication\\AcaraDataRequestApplication\\obj\\",
+      "projectPath": "H:\\02.Research\\08.TempSource\\AcaraDataRequestApplication\\AcaraDataRequestApplication\\AcaraDataRequestApplication.csproj",
+      "packagesPath": "C:\\Users\\tuannguyena1\\.nuget\\packages\\",
+      "outputPath": "H:\\02.Research\\08.TempSource\\AcaraDataRequestApplication\\AcaraDataRequestApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\NTM1HC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tuannguyena1\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13480,16 +13503,16 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://www.nuget.org/api/v2/": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\NTM1HC\\Downloads\\AcaraDataRequestApplication\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\NTM1HC\\Downloads\\AcaraDataRequestApplication\\Domain\\Domain.csproj"
+            "H:\\02.Research\\08.TempSource\\AcaraDataRequestApplication\\Domain\\Domain.csproj": {
+              "projectPath": "H:\\02.Research\\08.TempSource\\AcaraDataRequestApplication\\Domain\\Domain.csproj"
             },
-            "C:\\Users\\NTM1HC\\Downloads\\AcaraDataRequestApplication\\Persistence\\Persistence.csproj": {
-              "projectPath": "C:\\Users\\NTM1HC\\Downloads\\AcaraDataRequestApplication\\Persistence\\Persistence.csproj"
+            "H:\\02.Research\\08.TempSource\\AcaraDataRequestApplication\\Persistence\\Persistence.csproj": {
+              "projectPath": "H:\\02.Research\\08.TempSource\\AcaraDataRequestApplication\\Persistence\\Persistence.csproj"
             }
           }
         }
@@ -13503,30 +13526,34 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Tools": {
+          "AutoMapper": {
             "target": "Package",
-            "version": "2.1.1"
+            "version": "[7.0.1, )"
           },
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
-            "version": "4.0.1"
+            "version": "[4.0.1, )"
           },
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+          "BuildBundlerMinifier": {
             "target": "Package",
-            "version": "2.0.3"
-          },
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "2.0.0",
-            "autoReferenced": true
-          },
-          "AutoMapper": {
-            "target": "Package",
-            "version": "7.0.1"
+            "version": "[2.8.391, )"
           },
           "Microsoft.AspNetCore.All": {
             "target": "Package",
-            "version": "2.0.8"
+            "version": "[2.0.8, )"
+          },
+          "Microsoft.EntityFrameworkCore.Tools": {
+            "target": "Package",
+            "version": "[2.1.1, )"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "[2.0.0, )",
+            "autoReferenced": true
+          },
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+            "target": "Package",
+            "version": "[2.0.3, )"
           }
         },
         "imports": [

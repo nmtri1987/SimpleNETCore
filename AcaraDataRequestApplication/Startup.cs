@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Persistence;
 using Persistence.UnitOfWork;
 using AutoMapper;
+using AcaraDataRequestApplication.Services;
 
 namespace AcaraDataRequestApplication
 {
@@ -39,6 +40,9 @@ namespace AcaraDataRequestApplication
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper();
+
+            services.Configure<EmailConfiguration>(Configuration.GetSection("Email"));
+            services.AddTransient<IEmailService, EmailService>();
 
             services.AddMvc(options =>
             {

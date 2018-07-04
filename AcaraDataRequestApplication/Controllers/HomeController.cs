@@ -11,6 +11,9 @@ using AcaraDataRequestApplication.ModelBinders;
 using Domain.UnitOfWork;
 using AutoMapper;
 using Domain.Entities;
+using System.Linq.Expressions;
+using AcaraDataRequestApplication.Services;
+using Microsoft.Extensions.Options;
 
 namespace AcaraDataRequestApplication.Controllers
 {
@@ -18,11 +21,15 @@ namespace AcaraDataRequestApplication.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly IEmailService _emailService;
+        private readonly EmailConfiguration _emailConfiguration;
 
-        public HomeController(IUnitOfWork unitOfWork, IMapper mapper)
+        public HomeController(IUnitOfWork unitOfWork, IMapper mapper, IEmailService emailService, IOptions<EmailConfiguration> options)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _emailService = emailService;
+            _emailConfiguration = options.Value;
         }
 
         public IActionResult Index()
@@ -85,17 +92,37 @@ namespace AcaraDataRequestApplication.Controllers
                     dataRequestApplication = _unitOfWork.DataRequestApplicationRepository.Get(viewModel.Id);
                     dataRequestApplication = _mapper.Map<DataRequestApplicationViewModel, DataRequestApplication>(viewModel, dataRequestApplication);
                     _unitOfWork.DataRequestApplicationRepository.Update(dataRequestApplication);
+                    _unitOfWork.Commit();
                 }
                 else
                 {
                     dataRequestApplication = _mapper.Map<DataRequestApplicationViewModel, DataRequestApplication>(viewModel);
                     _unitOfWork.DataRequestApplicationRepository.Add(dataRequestApplication);
+                    _unitOfWork.Commit();
+
+                    _emailService.SendEmail(dataRequestApplication.EmailAddress, "[Acara] Notification", "Application successfully sent");
+                    _emailService.SendEmail(_emailConfiguration.AdminEmailAddress, "[Acara] A new application is created", $"A new application ({dataRequestApplication.Id}) has just created.");
                 }
 
-                _unitOfWork.Commit();
+                return RedirectToAction("DataRequestApplication", new { id = new Nullable<int>() });
 
             }
             return View(viewModel);
+        }
+
+        public IActionResult VerifySchoolDataLevel([ModelBinder(typeof(CustomSchoolDataLevelModelBinder))]bool isChecked, int id, string organisationABN)
+        {
+            if(isChecked)
+            {
+                if(IsRequestedStudentDataLevelInPreviousApplication(id, organisationABN))
+                {
+                    return Json($"School level data cannot be provided with student level data in this application and any previous approved and finalised application.");
+                }
+
+                return Json(true);
+            }
+
+            return Json(true);
         }
 
         public IActionResult DateOnAction()
@@ -131,6 +158,25 @@ namespace AcaraDataRequestApplication.Controllers
             base.Dispose(disposing);
         }
 
+        private bool IsRequestedStudentDataLevelInPreviousApplication(int id, string organisationABN)
+        {
+            if(string.IsNullOrEmpty(organisationABN))
+            {
+                return false;
+            }
 
+            Expression<Func<DataRequestApplication, bool>> predicate = x => x.OrganisationABN.Equals(organisationABN)
+                                                                && x.Id != id
+                                                                && x.Status == DataRequestApplicationStatus.Approved
+                                                                && (x.StudentLevelDeidentified_IsCurrentYear == true || x.StudentLevelDeidentified_IsAllYears == true);
+
+            var previousApplications = _unitOfWork.DataRequestApplicationRepository.List(predicate);
+            if (previousApplications != null && previousApplications.Any())
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

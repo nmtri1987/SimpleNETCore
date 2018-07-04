@@ -2,6 +2,8 @@
 using Domain.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Persistence.Repositories
@@ -29,6 +31,16 @@ namespace Persistence.Repositories
         public void Update(DataRequestApplication entity)
         {
             _context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+        }
+
+        public IList<DataRequestApplication> List(Expression<Func<DataRequestApplication, bool>> predicate)
+        {
+            if(predicate == null)
+            {
+                return _context.DataRequestApplications.ToList();
+            }
+
+            return _context.DataRequestApplications.Where(predicate).ToList();
         }
 
         #region IDisposable Support
@@ -65,6 +77,7 @@ namespace Persistence.Repositories
             // TODO: uncomment the following line if the finalizer is overridden above.
             // GC.SuppressFinalize(this);
         }
+
         #endregion
     }
 }
